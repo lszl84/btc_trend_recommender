@@ -114,11 +114,11 @@ except:
     print(f'Twilio and Binance config files required.')
     exit(1)
 
-gran = 3600 * 4
+gran = 3600
 fee = 0.0005
 funding_fee = 0.0004*10
 
-params = [6.89496966, 30.90694058,  1.66182175,  2.30673757]
+params = [46.388868,  19.00115881, 6.98667037, 1.43094999]
 window_width = max(params) * 3
 
 it = 0
