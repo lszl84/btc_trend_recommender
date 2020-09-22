@@ -196,7 +196,8 @@ while True:
     else:
         if long_position:
             last_stop = current_stop
-            current_stop = max(current_stop, last_tick['long_exit'])
+            if last_tick['low'] > current_stop: # change stop only if we are not stopped out by current stop!
+                current_stop = max(current_stop, last_tick['long_exit'])
 
             if current_stop > last_stop:
                 msg = f' -- LONG RAISE STOP to ${current_stop:.3f} ({current_stop/buy_price*100.0:.2f}%, size={stop_size:.3f})'
@@ -216,7 +217,8 @@ while True:
                     f"Long position {position_size:.6f} BTC @ {buy_price:.3f}. Last close: {last_tick['close']:.3f}. Current stop: {current_stop:.3f}", end='\r')
         else:
             last_stop = current_stop
-            current_stop = min(current_stop, last_tick['short_exit'])
+            if last_tick['high'] < current_stop: # change stop only if we are not stopped out by current stop!
+                current_stop = min(current_stop, last_tick['short_exit'])
 
             if current_stop < last_stop:
                 msg = f' -- SHORT LOWER STOP to ${current_stop:.3f} ({current_stop/sell_price*100.0:.2f}%, size={stop_size:.3f})'
