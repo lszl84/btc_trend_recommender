@@ -115,7 +115,7 @@ except:
     exit(1)
 
 gran = 3600
-fee = 0.0005
+fee = 0.0075
 funding_fee = 0.0004*10
 
 params = [46.388868,  19.00115881, 6.98667037, 1.43094999]
@@ -125,7 +125,7 @@ it = 0
 in_position = False
 long_position = False
 
-starting_capital = 1000
+starting_capital = 6400
 capital_usdt = starting_capital
 risk_fraction = 0.04
 leverage = 10
@@ -173,7 +173,7 @@ while True:
             position_size = risk / stop_size
             position_size = min(buying_power / buy_price, position_size)
 
-            msg = f'Open LONG {position_size:.6f} BTC at price ${buy_price:.3f}. Stop loss at ${current_stop:.3f} ({current_stop/buy_price*100.0:.2f}%, size={stop_size:.3f})'
+            msg = f'Open LONG {position_size:.6f} BTC ({(position_size*buy_price):.2f} USD) at price ${buy_price:.3f}. Stop loss at ${current_stop:.3f} ({current_stop/buy_price*100.0:.2f}%, size={stop_size:.3f})'
 
         elif last_tick['close'] < last_tick['short_entry']:
             current_stop = last_tick['short_exit']
@@ -191,7 +191,7 @@ while True:
             position_size = risk / stop_size
             position_size = min(buying_power / sell_price, position_size)
 
-            msg = f'Open SHORT {position_size:.6f} BTC at price ${sell_price:.3f}. Stop loss at ${current_stop:.3f} ({current_stop/sell_price*100.0:.2f}%, size={stop_size:.3f})'
+            msg = f'Open SHORT {position_size:.6f} BTC ({(position_size*sell_price):.2f} USD) at price ${sell_price:.3f}. Stop loss at ${current_stop:.3f} ({current_stop/sell_price*100.0:.2f}%, size={stop_size:.3f})'
 
     else:
         if long_position:
