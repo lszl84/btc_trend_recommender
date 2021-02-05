@@ -147,7 +147,7 @@ while True:
 
     msg = None
 
-      if not in_position:
+    if not in_position:
 
         if capital_usdt <= 0:
             break
