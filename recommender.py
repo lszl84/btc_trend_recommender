@@ -75,7 +75,7 @@ def setup_rolling_windows(df, x):
 
     df['short_entry'] = df['close'].rolling(
         window=trigger_window).min().shift(1)
-    df['short_exit'] = df['close'].rolling(window=stop_window).mean().shift(1)
+    df['short_exit'] = df['high'].shift(1) #df['close'].rolling(window=stop_window).mean().shift(1)
 
     df['volume_average'] = df['volume'].rolling(
         window=volume_window).mean().shift(1)
