@@ -140,7 +140,7 @@ while True:
 
     # we do not want to compound, but if we lose money, we cannot trade with the capital we do not have!
     # risk = risk_fraction * min(capital_usdt, starting_capital)
-    rick = risk_fraction * capital_usdt
+    risk = risk_fraction * capital_usdt
     # buying_power = leverage * min(capital_usdt, starting_capital)
     buying_power = leverage * capital_usdt
 
